@@ -1,0 +1,198 @@
+{
+  "employees": [
+    {
+      "employee_id": "E-205",
+      "name": "Carlos Rivera",
+      "role": "Facilities Coordinator",
+      "department": "Facilities",
+      "hire_date": "2019-03-15"
+    },
+    {
+      "employee_id": "E-206",
+      "name": "Priya Sharma",
+      "role": "IT Manager",
+      "department": "IT",
+      "hire_date": "2017-08-01"
+    },
+    {
+      "employee_id": "E-207",
+      "name": "David Chen",
+      "role": "Senior Financial Analyst",
+      "department": "Finance",
+      "hire_date": "2018-01-10"
+    },
+    {
+      "employee_id": "E-208",
+      "name": "Maria Torres",
+      "role": "Operations Specialist",
+      "department": "Operations",
+      "hire_date": "2020-06-22"
+    },
+    {
+      "employee_id": "E-209",
+      "name": "James Okoro",
+      "role": "Legal Counsel",
+      "department": "Legal",
+      "hire_date": "2016-11-03"
+    },
+    {
+      "employee_id": "E-210",
+      "name": "Susan Park",
+      "role": "Facilities Manager",
+      "department": "Facilities",
+      "hire_date": "2015-04-18"
+    },
+    {
+      "employee_id": "E-211",
+      "name": "Robert Haines",
+      "role": "HR Director",
+      "department": "HR",
+      "hire_date": "2014-09-01"
+    },
+    {
+      "employee_id": "E-301",
+      "name": "Angela Morrison",
+      "role": "VP Finance & Administration",
+      "department": "Finance",
+      "hire_date": "2012-02-15"
+    },
+    {
+      "employee_id": "E-302",
+      "name": "Thomas Nguyen",
+      "role": "Controller",
+      "department": "Finance",
+      "hire_date": "2016-05-20"
+    },
+    {
+      "employee_id": "E-303",
+      "name": "Karen Whitfield",
+      "role": "Procurement Manager",
+      "department": "Operations",
+      "hire_date": "2018-10-01"
+    }
+  ],
+
+  "approver_authority_matrix": [
+    {
+      "employee_id": "E-301",
+      "name": "Angela Morrison",
+      "role": "VP Finance & Administration",
+      "max_approval_amount": 250000.00,
+      "categories": ["all"]
+    },
+    {
+      "employee_id": "E-302",
+      "name": "Thomas Nguyen",
+      "role": "Controller",
+      "max_approval_amount": 25000.00,
+      "categories": ["finance", "consulting", "insurance"]
+    },
+    {
+      "employee_id": "E-303",
+      "name": "Karen Whitfield",
+      "role": "Procurement Manager",
+      "max_approval_amount": 15000.00,
+      "categories": ["facilities", "IT", "operations", "HR"]
+    },
+    {
+      "employee_id": "E-211",
+      "name": "Robert Haines",
+      "role": "HR Director",
+      "max_approval_amount": 10000.00,
+      "categories": ["HR", "training"]
+    }
+  ],
+
+  "vendors": [
+    {
+      "vendor_id": "V-101",
+      "name": "Pinnacle Office Supplies",
+      "status": "active",
+      "category": "facilities",
+      "onboarding_date": "2018-06-01",
+      "primary_approver": "E-303",
+      "related_entities": []
+    },
+    {
+      "vendor_id": "V-102",
+      "name": "Greenfield IT Services",
+      "status": "active",
+      "category": "IT",
+      "onboarding_date": "2017-01-15",
+      "primary_approver": "E-303",
+      "related_entities": []
+    },
+    {
+      "vendor_id": "V-103",
+      "name": "Lakewood Consulting Group",
+      "status": "active",
+      "category": "consulting",
+      "onboarding_date": "2019-09-01",
+      "primary_approver": "E-301",
+      "related_entities": ["Lakewood Advisory LLC"]
+    },
+    {
+      "vendor_id": "V-104",
+      "name": "Summit Logistics Inc.",
+      "status": "active",
+      "category": "operations",
+      "onboarding_date": "2020-03-10",
+      "primary_approver": "E-303",
+      "related_entities": []
+    },
+    {
+      "vendor_id": "V-105",
+      "name": "Redstone Legal Partners",
+      "status": "active",
+      "category": "legal",
+      "onboarding_date": "2016-07-20",
+      "primary_approver": "E-301",
+      "related_entities": []
+    },
+    {
+      "vendor_id": "V-106",
+      "name": "Clearwater Staffing",
+      "status": "active",
+      "category": "finance",
+      "onboarding_date": "2021-01-05",
+      "primary_approver": "E-301",
+      "related_entities": []
+    },
+    {
+      "vendor_id": "V-107",
+      "name": "Bridgeport Facilities Mgmt",
+      "status": "active",
+      "category": "facilities",
+      "onboarding_date": "2019-11-15",
+      "primary_approver": "E-303",
+      "related_entities": []
+    },
+    {
+      "vendor_id": "V-108",
+      "name": "Northstar Analytics",
+      "status": "active",
+      "category": "IT",
+      "onboarding_date": "2022-04-01",
+      "primary_approver": "E-303",
+      "related_entities": []
+    },
+    {
+      "vendor_id": "V-109",
+      "name": "Atlas Training Solutions",
+      "status": "active",
+      "category": "HR",
+      "onboarding_date": "2020-08-12",
+      "primary_approver": "E-303",
+      "related_entities": []
+    },
+    {
+      "vendor_id": "V-110",
+      "name": "Crestline Insurance Brokers",
+      "status": "active",
+      "category": "insurance",
+      "onboarding_date": "2018-02-28",
+      "primary_approver": "E-301",
+      "related_entities": ["Crestline Underwriting Ltd."]
+    }
+  ]
+}

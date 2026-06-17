@@ -1,0 +1,90 @@
+[
+  {
+    "wp_id": "WP-2024-001",
+    "period": "FY2024",
+    "objective": "Test operating effectiveness of PO approval controls for purchases >= $10,000",
+    "control_id": "CTRL-01",
+    "procedure_performed": "Selected 30 POs >= $10,000; verified each carried manual approval by an authorized approver within the delegation-of-authority matrix",
+    "conclusion": "One deviation identified: PO-2024-0188 ($11,200) was auto-approved without manual sign-off. Deviation rate 1/30 (3.3%), within tolerable rate of 5%.",
+    "disposition": "DEFICIENCY NOTED",
+    "deviation_rate": "1/30 (3.3%)",
+    "recurring_finding": "Auto-approval bypass for amounts near the $10,000 threshold has been noted in FY2023 as well. Recommend system control hardening."
+  },
+  {
+    "wp_id": "WP-2024-002",
+    "period": "FY2024",
+    "objective": "Test segregation of duties — no single individual both requests and approves a purchase",
+    "control_id": "CTRL-02",
+    "procedure_performed": "Tested full population of 142 purchase transactions for requestor/approver overlap",
+    "conclusion": "No deviations identified. Every transaction had a distinct requestor and approver.",
+    "disposition": "NO EXCEPTION",
+    "deviation_rate": "0/142 (0%)",
+    "recurring_finding": null
+  },
+  {
+    "wp_id": "WP-2024-003",
+    "period": "FY2024",
+    "objective": "Substantive test of AP — vouch sample of payments to supporting documentation",
+    "control_id": "CTRL-03",
+    "procedure_performed": "Selected 25 AP disbursements via monetary-unit sampling; vouched each to purchase order, receiving report, and vendor invoice",
+    "conclusion": "Two items lacked a receiving report on file. Amounts immaterial ($1,400 and $3,200). No duplicate payments detected.",
+    "disposition": "DEFICIENCY NOTED",
+    "deviation_rate": "2/25 (8.0%)",
+    "recurring_finding": "Missing receiving reports were also flagged in FY2023. Root cause: manual process for low-value goods receipts."
+  },
+  {
+    "wp_id": "WP-2024-004",
+    "period": "FY2024",
+    "objective": "Test journal entry review controls — all manual JEs reviewed by a second preparer",
+    "control_id": "CTRL-04",
+    "procedure_performed": "Tested 50 manual journal entries for evidence of independent review (sign-off or system log)",
+    "conclusion": "No deviations. All entries carried independent reviewer sign-off within 2 business days of posting.",
+    "disposition": "NO EXCEPTION",
+    "deviation_rate": "0/50 (0%)",
+    "recurring_finding": null
+  },
+  {
+    "wp_id": "WP-2024-005",
+    "period": "FY2024",
+    "objective": "Vendor onboarding — verify new vendors approved per policy before first payment",
+    "control_id": "CTRL-01",
+    "procedure_performed": "Identified 8 vendors onboarded during FY2024; verified each had a completed vendor approval form, W-9, and banking verification before first disbursement",
+    "conclusion": "No deviations. All vendors properly onboarded.",
+    "disposition": "NO EXCEPTION",
+    "deviation_rate": "0/8 (0%)",
+    "recurring_finding": null
+  },
+  {
+    "wp_id": "WP-2024-006",
+    "period": "FY2024",
+    "objective": "Test delegation-of-authority limits — approvals within authorized dollar thresholds",
+    "control_id": "CTRL-01",
+    "procedure_performed": "For 30 POs tested in WP-2024-001, cross-referenced approver to authority matrix; verified amount did not exceed approver's limit",
+    "conclusion": "No deviations. All approvers acted within their delegated authority limits.",
+    "disposition": "NO EXCEPTION",
+    "deviation_rate": "0/30 (0%)",
+    "recurring_finding": null
+  },
+  {
+    "wp_id": "WP-2024-007",
+    "period": "FY2024",
+    "objective": "Duplicate payment detection — scan full AP population for duplicate invoice numbers or amounts to same vendor within 30 days",
+    "control_id": "CTRL-03",
+    "procedure_performed": "Ran automated duplicate-detection script across 980 AP disbursements; flagged potential duplicates for manual review",
+    "conclusion": "Three potential duplicates flagged; all three confirmed as legitimate separate invoices upon review of supporting documentation. No actual duplicate payments.",
+    "disposition": "NO EXCEPTION",
+    "deviation_rate": "0/980 (0%)",
+    "recurring_finding": null
+  },
+  {
+    "wp_id": "WP-2024-008",
+    "period": "FY2023",
+    "objective": "Test PO approval controls for purchases >= $10,000",
+    "control_id": "CTRL-01",
+    "procedure_performed": "Selected 25 POs >= $10,000; verified manual approval and authority limits",
+    "conclusion": "One auto-approval bypass identified (PO-2023-0042, $10,500). Deviation rate 1/25 (4.0%).",
+    "disposition": "DEFICIENCY NOTED",
+    "deviation_rate": "1/25 (4.0%)",
+    "recurring_finding": "Same root cause as current year — system auto-approval threshold not enforced for amounts near the boundary. Now a recurring finding across two periods."
+  }
+]

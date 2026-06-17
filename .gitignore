@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.pyc
+chroma_data/
+.venv/
+output/workpapers/*.json
+.streamlit/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
