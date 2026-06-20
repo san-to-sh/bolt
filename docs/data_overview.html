@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bolt — Synthetic Data Overview</title>
+<style>
+  :root {
+    --bg: #0e1117;
+    --card: #1a1d24;
+    --border: #2d3139;
+    --text: #e0e0e0;
+    --muted: #888;
+    --accent: #ff6b35;
+    --green: #2ecc71;
+    --amber: #f39c12;
+    --red: #e74c3c;
+    --blue: #3498db;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 2rem; line-height: 1.5; }
+  h1 { color: var(--accent); margin-bottom: 0.25rem; font-size: 1.8rem; }
+  h2 { color: var(--accent); margin: 2rem 0 1rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+  h3 { color: var(--text); margin: 1.5rem 0 0.75rem; font-size: 1.1rem; }
+  .subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; }
+  .card h4 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1rem; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; margin-left: 0.5rem; }
+  .badge-green { background: rgba(46,204,113,0.2); color: var(--green); }
+  .badge-amber { background: rgba(243,156,18,0.2); color: var(--amber); }
+  .badge-red { background: rgba(231,76,60,0.2); color: var(--red); }
+  .badge-blue { background: rgba(52,152,219,0.2); color: var(--blue); }
+  table { width: 100%; border-collapse: collapse; margin: 0.75rem 0; font-size: 0.85rem; }
+  th { text-align: left; padding: 8px 10px; background: rgba(255,255,255,0.05); border-bottom: 2px solid var(--border); color: var(--muted); font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.5px; }
+  td { padding: 6px 10px; border-bottom: 1px solid var(--border); }
+  tr:hover td { background: rgba(255,255,255,0.03); }
+  .deviation { color: var(--red); font-weight: 500; }
+  .clean { color: var(--green); }
+  .stat { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid var(--border); }
+  .stat:last-child { border-bottom: none; }
+  .stat-label { color: var(--muted); }
+  .stat-value { font-weight: 600; }
+  .tag { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 0.7rem; margin: 1px; background: rgba(255,255,255,0.08); }
+  .corpus-section { margin: 0.5rem 0; padding: 0.5rem 0; }
+  .corpus-doc { padding: 0.5rem 0.75rem; margin: 0.25rem 0; background: rgba(255,255,255,0.03); border-radius: 4px; border-left: 3px solid var(--accent); }
+  .corpus-doc .title { font-weight: 600; font-size: 0.9rem; }
+  .corpus-doc .meta { color: var(--muted); font-size: 0.8rem; margin-top: 0.25rem; }
+  details { margin: 0.5rem 0; }
+  summary { cursor: pointer; color: var(--blue); font-weight: 500; }
+  summary:hover { text-decoration: underline; }
+  .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.8rem; text-align: center; }
+</style>
+</head>
+<body>
+
+<h1>Bolt — Synthetic Data Overview</h1>
+<p class="subtitle">3rd International Conference on Auditing & AI | University of Duisburg-Essen, Sept 2&ndash;4, 2026</p>
+
+<!-- ── Population Summary ──────────────────────────────────── -->
+<h2>Transaction Population</h2>
+<div class="grid">
+  <div class="card">
+    <h4>Population Statistics</h4>
+    <div class="stat"><span class="stat-label">Total items</span><span class="stat-value">25</span></div>
+    <div class="stat"><span class="stat-label">Total value</span><span class="stat-value">$324,825.00</span></div>
+    <div class="stat"><span class="stat-label">Period</span><span class="stat-value">July 2025 &ndash; May 2026</span></div>
+    <div class="stat"><span class="stat-label">Vendors</span><span class="stat-value">10</span></div>
+    <div class="stat"><span class="stat-label">Departments</span><span class="stat-value">6</span></div>
+    <div class="stat"><span class="stat-label">Amount range</span><span class="stat-value">$1,475 &ndash; $45,000</span></div>
+    <div class="stat"><span class="stat-label">Planted deviations</span><span class="stat-value deviation">5</span></div>
+  </div>
+  <div class="card">
+    <h4>By Control ID</h4>
+    <div class="stat"><span class="stat-label">CTRL-01 (PO approval)</span><span class="stat-value">9 items <span class="badge badge-amber">2 devs</span></span></div>
+    <div class="stat"><span class="stat-label">CTRL-02 (SoD)</span><span class="stat-value">6 items <span class="badge badge-amber">1 dev</span></span></div>
+    <div class="stat"><span class="stat-label">CTRL-03 (AP substantive)</span><span class="stat-value">5 items <span class="badge badge-red">2 devs</span></span></div>
+    <div class="stat"><span class="stat-label">CTRL-04 (JE review)</span><span class="stat-value">5 items <span class="badge badge-green">clean</span></span></div>
+  </div>
+</div>
+
+<!-- ── Planted Deviations ──────────────────────────────────── -->
+<h2>Planted Deviations</h2>
+<table>
+  <tr><th>Txn</th><th>Vendor</th><th>Amount</th><th>Control</th><th>Type</th><th>Detail</th></tr>
+  <tr><td>TXN-003</td><td>Lakewood Consulting Group</td><td>$45,000</td><td>CTRL-01</td><td class="deviation">approval_authority_exceeded</td><td>Approver E-302 max $25,000; amount $45,000</td></tr>
+  <tr><td>TXN-004</td><td>Summit Logistics Inc.</td><td>$12,500</td><td>CTRL-01</td><td class="deviation">auto_approved_above_threshold</td><td>System auto-approved; amount &ge; $10,000 requires manual</td></tr>
+  <tr><td>TXN-011</td><td>Atlas Training Solutions</td><td>$4,200</td><td>CTRL-02</td><td class="deviation">segregation_of_duties</td><td>E-211 both requested and approved</td></tr>
+  <tr><td>TXN-016</td><td>Redstone Legal Partners</td><td>$14,200</td><td>CTRL-03</td><td class="deviation">missing_supporting_doc</td><td>No PO or receipt on file</td></tr>
+  <tr><td>TXN-019</td><td>Lakewood Consulting Group</td><td>$45,000</td><td>CTRL-03</td><td class="deviation">duplicate_invoice</td><td>Same vendor/amount/PO as TXN-003</td></tr>
+</table>
+
+<!-- ── Four Procedures ─────────────────────────────────────── -->
+<h2>Demo Procedures &amp; Expected Results</h2>
+<div class="grid">
+  <div class="card">
+    <h4>PROC-1: PO Approval Authority <span class="badge badge-amber">DEFICIENCY</span></h4>
+    <p style="font-size:0.85rem; color:var(--muted);">Control: CTRL-01 | Assertion: Authorization</p>
+    <p style="margin-top:0.5rem; font-size:0.85rem;">Test that every PO &ge; $10,000 carries valid manual approval by an authorized approver within the delegation-of-authority matrix.</p>
+    <p style="margin-top:0.5rem; font-size:0.85rem;"><strong>Deviations:</strong> <span class="deviation">2 of 9 (22.2%)</span> &mdash; TXN-003 authority exceeded, TXN-004 auto-approved. Recurring finding (3rd consecutive year for auto-approval bypass).</p>
+  </div>
+  <div class="card">
+    <h4>PROC-2: Segregation of Duties <span class="badge badge-amber">DEFICIENCY</span></h4>
+    <p style="font-size:0.85rem; color:var(--muted);">Control: CTRL-02 | Assertion: Authorization</p>
+    <p style="margin-top:0.5rem; font-size:0.85rem;">Confirm no single individual both requested and approved a purchase in the procure-to-pay cycle.</p>
+    <p style="margin-top:0.5rem; font-size:0.85rem;"><strong>Deviations:</strong> <span class="deviation">1 of 6 (16.7%)</span> &mdash; TXN-011 requestor E-211 = approver E-211. New finding (FY2024 had zero violations).</p>
+  </div>
+  <div class="card">
+    <h4>PROC-3: Substantive AP Test <span class="badge badge-red">ESCALATE</span></h4>
+    <p style="font-size:0.85rem; color:var(--muted);">Control: CTRL-03 | Assertion: Occurrence, Authorization</p>
+    <p style="margin-top:0.5rem; font-size:0.85rem;">Vouch AP payments to supporting documentation; scan for duplicate invoices and missing support.</p>
+    <p style="margin-top:0.5rem; font-size:0.85rem;"><strong>Deviations:</strong> <span class="deviation">2 of 5 (40.0%)</span> &mdash; TXN-016 missing doc ($14,200), TXN-019 duplicate invoice ($45,000). Combined exceptions $59,200 (79.6% by value).</p>
+  </div>
+  <div class="card">
+    <h4>PROC-4: Journal Entry Review <span class="badge badge-green">NO EXCEPTION</span></h4>
+    <p style="font-size:0.85rem; color:var(--muted);">Control: CTRL-04 | Assertion: Accuracy, Occurrence</p>
+    <p style="margin-top:0.5rem; font-size:0.85rem;">Verify all items under CTRL-04 carry proper independent review.</p>
+    <p style="margin-top:0.5rem; font-size:0.85rem;"><strong>Deviations:</strong> <span class="clean">0 of 5 (0.0%)</span> &mdash; All items clean. Consistent with prior year (WP-2024-004, 0/50).</p>
+  </div>
+</div>
+
+<!-- ── Master Data ─────────────────────────────────────────── -->
+<h2>Master Data</h2>
+<div class="grid">
+  <div class="card">
+    <h4>Delegation-of-Authority Matrix</h4>
+    <p style="font-size:0.8rem; color:var(--muted); margin-bottom:0.5rem;">Approval threshold: $10,000 (auto-approve below; manual above)</p>
+    <table>
+      <tr><th>ID</th><th>Name</th><th>Role</th><th>Max Amount</th><th>Categories</th></tr>
+      <tr><td>E-301</td><td>Angela Morrison</td><td>VP Finance & Admin</td><td>$250,000</td><td>all</td></tr>
+      <tr><td>E-302</td><td>Thomas Nguyen</td><td>Controller</td><td>$25,000</td><td>finance, consulting, insurance</td></tr>
+      <tr><td>E-303</td><td>Karen Whitfield</td><td>Procurement Mgr</td><td>$15,000</td><td>facilities, IT, operations, HR</td></tr>
+      <tr><td>E-211</td><td>Robert Haines</td><td>HR Director</td><td>$10,000</td><td>HR, training</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h4>Vendor Summary (10 vendors)</h4>
+    <table>
+      <tr><th>ID</th><th>Name</th><th>Category</th><th>Related</th></tr>
+      <tr><td>V-101</td><td>Pinnacle Office Supplies</td><td>facilities</td><td>&mdash;</td></tr>
+      <tr><td>V-102</td><td>Greenfield IT Services</td><td>IT</td><td>&mdash;</td></tr>
+      <tr><td>V-103</td><td>Lakewood Consulting Group</td><td>consulting</td><td>Lakewood Advisory LLC</td></tr>
+      <tr><td>V-104</td><td>Summit Logistics Inc.</td><td>operations</td><td>&mdash;</td></tr>
+      <tr><td>V-105</td><td>Redstone Legal Partners</td><td>legal</td><td>&mdash;</td></tr>
+      <tr><td>V-106</td><td>Clearwater Staffing</td><td>finance</td><td>&mdash;</td></tr>
+      <tr><td>V-107</td><td>Bridgeport Facilities Mgmt</td><td>facilities</td><td>&mdash;</td></tr>
+      <tr><td>V-108</td><td>Northstar Analytics</td><td>IT</td><td>&mdash;</td></tr>
+      <tr><td>V-109</td><td>Atlas Training Solutions</td><td>HR</td><td>&mdash;</td></tr>
+      <tr><td>V-110</td><td>Crestline Insurance Brokers</td><td>insurance</td><td>Crestline Underwriting Ltd.</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ── Criteria Corpus ─────────────────────────────────────── -->
+<h2>Criteria Corpus (ChromaDB)</h2>
+<div class="grid">
+  <div class="card">
+    <h4>Internal Policies <span class="badge badge-blue">28 chunks</span></h4>
+    <div class="corpus-doc"><span class="title">POL-001 &mdash; Purchase Order Approval Policy</span><div class="meta">7 sections | $10k threshold, delegation-of-authority matrix, documentation requirements</div></div>
+    <div class="corpus-doc"><span class="title">POL-002 &mdash; Segregation of Duties Policy</span><div class="meta">5 sections | Incompatible function pairs, system enforcement, compensating controls</div></div>
+    <div class="corpus-doc"><span class="title">POL-003 &mdash; Vendor Onboarding Policy</span><div class="meta">6 sections | Required documentation, approval, related-entity disclosure</div></div>
+    <div class="corpus-doc"><span class="title">POL-004 &mdash; Journal Entry Review Policy</span><div class="meta">6 sections | Preparer/reviewer separation, 2-day timeliness, documentation</div></div>
+  </div>
+  <div class="card">
+    <h4>Synthetic Standards <span class="badge badge-blue">15 chunks</span></h4>
+    <p style="font-size:0.75rem; color:var(--muted); margin-bottom:0.5rem; font-style:italic;">Synthetic summaries for demo purposes &mdash; not actual standards. No verbatim text from IIA IPPF, PCAOB, ISA, COBIT, or SOX.</p>
+    <div class="corpus-doc"><span class="title">Control Operating-Effectiveness Testing</span><div class="meta">4 sections | Design vs. operating effectiveness, deviation rate, tolerable rate, sample size<br><span class="tag">objective: design_vs_operating_effectiveness</span> <span class="tag">objective: deviation_rate_assessment</span> <span class="tag">objective: sampling_methodology</span></div></div>
+    <div class="corpus-doc"><span class="title">Financial Statement Assertions</span><div class="meta">4 sections | Occurrence, completeness, authorization, accuracy, cutoff, existence, valuation<br><span class="tag">assertion: occurrence</span> <span class="tag">assertion: completeness</span> <span class="tag">assertion: authorization</span> <span class="tag">assertion: accuracy</span></div></div>
+    <div class="corpus-doc"><span class="title">Audit Evidence and Sampling</span><div class="meta">4 sections | Sufficient &amp; appropriate evidence, random/MUS/haphazard sampling, documentation<br><span class="tag">objective: sufficient_appropriate_evidence</span> <span class="tag">objective: sampling_methodology</span></div></div>
+  </div>
+</div>
+
+<!-- ── Prior Workpapers ────────────────────────────────────── -->
+<h2>Prior-Year Workpapers (8 documents)</h2>
+<table>
+  <tr><th>WP ID</th><th>Period</th><th>Control</th><th>Objective</th><th>Dev. Rate</th><th>Disposition</th><th>Recurring?</th></tr>
+  <tr><td>WP-2024-001</td><td>FY2024</td><td>CTRL-01</td><td>PO approval controls &ge; $10k</td><td>1/30 (3.3%)</td><td><span class="badge badge-amber">DEFICIENCY</span></td><td class="deviation">Yes &mdash; also FY2023</td></tr>
+  <tr><td>WP-2024-002</td><td>FY2024</td><td>CTRL-02</td><td>Segregation of duties</td><td>0/142 (0%)</td><td><span class="badge badge-green">NO EXCEPTION</span></td><td>&mdash;</td></tr>
+  <tr><td>WP-2024-003</td><td>FY2024</td><td>CTRL-03</td><td>AP &mdash; vouch to supporting docs</td><td>2/25 (8.0%)</td><td><span class="badge badge-amber">DEFICIENCY</span></td><td class="deviation">Yes &mdash; also FY2023</td></tr>
+  <tr><td>WP-2024-004</td><td>FY2024</td><td>CTRL-04</td><td>Journal entry review</td><td>0/50 (0%)</td><td><span class="badge badge-green">NO EXCEPTION</span></td><td>&mdash;</td></tr>
+  <tr><td>WP-2024-005</td><td>FY2024</td><td>CTRL-01</td><td>Vendor onboarding</td><td>0/8 (0%)</td><td><span class="badge badge-green">NO EXCEPTION</span></td><td>&mdash;</td></tr>
+  <tr><td>WP-2024-006</td><td>FY2024</td><td>CTRL-01</td><td>Delegation-of-authority limits</td><td>0/30 (0%)</td><td><span class="badge badge-green">NO EXCEPTION</span></td><td>&mdash;</td></tr>
+  <tr><td>WP-2024-007</td><td>FY2024</td><td>CTRL-03</td><td>Duplicate payment detection</td><td>0/980 (0%)</td><td><span class="badge badge-green">NO EXCEPTION</span></td><td>&mdash;</td></tr>
+  <tr><td>WP-2024-008</td><td>FY2023</td><td>CTRL-01</td><td>PO approval controls &ge; $10k</td><td>1/25 (4.0%)</td><td><span class="badge badge-amber">DEFICIENCY</span></td><td class="deviation">Yes &mdash; recurring</td></tr>
+</table>
+
+<div class="footer">
+  Bolt &mdash; AI Audit Assistant | All data is synthetic. No real PII. No verbatim audit standards.<br>
+  Built for the 3rd International Conference on Auditing and Artificial Intelligence.
+</div>
+
+</body>
+</html>
