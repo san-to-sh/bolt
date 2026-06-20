@@ -1,11 +1,13 @@
-"""Ingest policies and standards into a ChromaDB 'criteria' collection.
+"""Ingest policies, standards, and prior workpapers into ChromaDB.
 
-Policies are chunked by '## ' section headers.
-Standards are chunked by '## ' section headers, with assertion/objective metadata.
+- 'criteria' collection: policies chunked by '## ' section, standards chunked by
+  section with assertion/objective metadata.
+- 'prior_workpapers' collection: one document per prior-year workpaper.
 
 Persists to ./chroma_data relative to this script's directory.
 """
 
+import json
 import os
 import re
 import chromadb
@@ -163,5 +165,49 @@ def ingest():
     print(f"  Chunks with objective tag:  {with_objective}")
 
 
+def ingest_prior_workpapers():
+    client = chromadb.PersistentClient(path=CHROMA_PATH)
+
+    try:
+        client.delete_collection("prior_workpapers")
+    except (ValueError, chromadb.errors.NotFoundError):
+        pass
+
+    collection = client.create_collection(
+        name="prior_workpapers",
+        metadata={"description": "Prior-year audit workpapers and findings"},
+    )
+
+    wp_path = os.path.join(DATA_DIR, "synthetic", "prior_workpapers.json")
+    with open(wp_path) as f:
+        workpapers = json.load(f)
+
+    ids = []
+    docs = []
+    metas = []
+
+    for wp in workpapers:
+        ids.append(wp["wp_id"])
+        docs.append(
+            f"Objective: {wp['objective']}\n"
+            f"Procedure: {wp['procedure_performed']}\n"
+            f"Conclusion: {wp['conclusion']}"
+        )
+        metas.append({
+            "wp_id": wp["wp_id"],
+            "period": wp["period"],
+            "objective": wp["objective"],
+            "control_id": wp["control_id"],
+            "conclusion": wp["conclusion"],
+            "disposition": wp["disposition"],
+            "deviation_rate": wp["deviation_rate"],
+            "recurring_finding": wp.get("recurring_finding") or "",
+        })
+
+    collection.add(ids=ids, documents=docs, metadatas=metas)
+    print(f"\nIngested {len(ids)} prior workpapers into 'prior_workpapers' collection.")
+
+
 if __name__ == "__main__":
     ingest()
+    ingest_prior_workpapers()
