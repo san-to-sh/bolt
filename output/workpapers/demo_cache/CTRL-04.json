@@ -1,0 +1,23 @@
+{
+  "objective": "Test journal entry review controls — all items under CTRL-04 carry proper independent review.",
+  "assertion": "Accuracy, Occurrence",
+  "control_id": "CTRL-04",
+  "procedure_performed": "Retrieved the full AP population for CTRL-04 (5 items, $28,900.00). Tested all items via test_items_against_control for deviations. Queried criteria_rag for POL-004 (Journal Entry and Manual Adjustment Review Policy) and the synthetic standard on control operating-effectiveness testing. Queried prior-year workpapers for CTRL-04 precedent.",
+  "population_summary": "Source: LEDGER_DB. Account: AP. Period: 2025–2026. Population: 5 items. Total value: $28,900.00.",
+  "sample": "Full population examined (5 of 5 items).",
+  "exceptions": [],
+  "deviation_rate": "0 of 5 items (0.0%)",
+  "criteria_cited": [
+    "POL-004 — Journal Entry and Manual Adjustment Review Policy | §3 Preparer and Reviewer Requirements | Reviewer must be a different individual from the preparer; verifies business purpose, amounts, accounts, and supporting documentation.",
+    "POL-004 — Journal Entry and Manual Adjustment Review Policy | §4 Timeliness | Review must be completed within 2 business days of posting date.",
+    "Synthetic Audit Standard — Control Operating-Effectiveness Testing | §S1 | Operating effectiveness: the control operated as designed consistently throughout the period.",
+    "Synthetic Audit Standard — Control Operating-Effectiveness Testing | §S4 | Evaluating Results: when no deviations are found, auditor may conclude the control operated effectively, subject to inherent limitations of the test."
+  ],
+  "prior_year_reference": [
+    "WP-2024-004 | FY2024 | CTRL-04 | 0/50 (0%) — no deviations. NO EXCEPTION. All entries carried independent reviewer sign-off within 2 business days. Consistent clean result across periods."
+  ],
+  "preliminary_conclusion": "CTRL-04 exhibited zero deviations across all 5 items tested. Every item in the population carried proper approval and supporting documentation consistent with the control's design requirements. This is consistent with the prior-year result (WP-2024-004, 0/50, NO EXCEPTION). The control appears to be operating effectively for the tested population, subject to auditor confirmation.",
+  "judgment_note": "The auditor should confirm that the 5-item population represents the complete set of CTRL-04 transactions for the period and that no items were excluded from the population provided by LEDGER_DB.",
+  "recommended_disposition": "NO EXCEPTION — Auditor judgment required",
+  "prepared_at": "2026-06-19T00:00:00Z"
+}

@@ -18,7 +18,10 @@ from app.procedure_scanner import get_procedures
 st.set_page_config(page_title="Bolt — AI Audit Assistant", layout="wide", page_icon="⚡")
 
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "..", "output", "workpapers")
+DEMO_CACHE_DIR = os.path.join(OUTPUT_DIR, "demo_cache")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+DEMO_MODE_ENV = os.environ.get("BOLT_DEMO_MODE", "").lower() in ("1", "true", "yes")
 
 # ── Session state defaults ──────────────────────────────────────────────────
 for key, default in {
@@ -26,9 +29,36 @@ for key, default in {
     "trace": [],
     "running": False,
     "run_complete": False,
+    "demo_mode": DEMO_MODE_ENV,
 }.items():
     if key not in st.session_state:
         st.session_state[key] = default
+
+
+# ── Demo mode: load cached workpapers ────────────────────────────────────────
+def _load_demo_cache(control_id: str) -> dict | None:
+    path = os.path.join(DEMO_CACHE_DIR, f"{control_id}.json")
+    if os.path.exists(path):
+        with open(path) as f:
+            return json.load(f)
+    return None
+
+
+def _start_demo_run(proc: dict):
+    control_id = proc.get("control_id", "")
+    cached = _load_demo_cache(control_id)
+    if cached:
+        st.session_state.workpaper = cached
+        st.session_state.trace = [
+            "[DEMO MODE] Loaded cached workpaper from demo_cache/",
+            f"[WORKPAPER] Drafted — disposition: {cached.get('recommended_disposition', 'UNKNOWN')}",
+        ]
+        st.session_state.run_complete = True
+        st.session_state.running = False
+    else:
+        st.session_state.trace = [f"[ERROR] No demo cache found for {control_id}"]
+        st.session_state.run_complete = True
+        st.session_state.running = False
 
 
 # ── Async / sync bridge ─────────────────────────────────────────────────────
@@ -128,6 +158,21 @@ def _build_pdf(wp: dict) -> bytes:
     return pdf.output()
 
 
+# ── Sidebar ──────────────────────────────────────────────────────────────────
+with st.sidebar:
+    st.title("Bolt")
+    st.caption("AI Audit Assistant")
+    st.divider()
+    st.session_state.demo_mode = st.toggle(
+        "Demo Mode (cached results)",
+        value=st.session_state.demo_mode,
+        help="When on, loads pre-cached workpapers instead of calling the API. Use for demos or when API is unavailable.",
+    )
+    if st.session_state.demo_mode:
+        st.info("Demo mode: using cached workpapers")
+    st.divider()
+    st.caption("3rd Intl. Conference on Auditing & AI\nUniversity of Duisburg-Essen, Sept 2–4, 2026")
+
 # ── Layout ───────────────────────────────────────────────────────────────────
 left, center, right = st.columns([1, 2, 2])
 
@@ -167,7 +212,10 @@ with left:
                 disabled=st.session_state.running,
                 use_container_width=True,
             ):
-                _start_run(run_proc)
+                if st.session_state.demo_mode:
+                    _start_demo_run(run_proc)
+                else:
+                    _start_run(run_proc)
                 st.rerun()
 
     st.divider()
@@ -187,7 +235,10 @@ with left:
                 "account": c_account,
                 "period": c_period,
             }
-            _start_run(custom)
+            if st.session_state.demo_mode:
+                _start_demo_run(custom)
+            else:
+                _start_run(custom)
             st.rerun()
 
 

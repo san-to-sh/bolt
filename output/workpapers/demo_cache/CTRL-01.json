@@ -1,0 +1,29 @@
+{
+  "objective": "Test operating effectiveness of PO approval authority controls for purchases >= $10,000 under CTRL-01.",
+  "assertion": "Authorization",
+  "control_id": "CTRL-01",
+  "procedure_performed": "Retrieved the full AP population for CTRL-01 (9 items, $133,825.00, July–December 2025). Tested all 9 items via test_items_against_control for approval deviations. Queried criteria_rag for POL-001 (Purchase Order Approval Policy) sections on approval thresholds and delegation of authority, and for the synthetic standard on control operating-effectiveness testing. Retrieved master record for approver E-302 and verified authority via check_authority_matrix. Queried prior-year workpapers for CTRL-01 precedent.",
+  "population_summary": "Source: LEDGER_DB. Account: AP. Period: 2025–2026. Population: 9 items. Total value: $133,825.00.",
+  "sample": "Full population examined (9 of 9 items). No sampling risk.",
+  "exceptions": [
+    "TXN-003 | Lakewood Consulting Group | $45,000.00 | approval_authority_exceeded — Approver E-302 (Thomas Nguyen, Controller) max authority $25,000; amount exceeds limit by $20,000. Breaches POL-001 §4 Delegation-of-Authority Matrix: 'An approver may only approve purchase orders within the dollar limit and categories assigned to them.'",
+    "TXN-004 | Summit Logistics Inc. | $12,500.00 | auto_approved_above_threshold — Amount >= $10,000 was auto-approved (approved_by = SYSTEM) without manual sign-off. Breaches POL-001 §3 Approval Thresholds: Tier 2 ($10,000–$24,999) requires manual approval."
+  ],
+  "deviation_rate": "2 of 9 items (22.2%)",
+  "criteria_cited": [
+    "POL-001 — Purchase Order Approval Policy | §3 Approval Thresholds | Tier 2 ($10,000–$24,999): manual approval required; auto-approval limited to Tier 1 (below $10,000).",
+    "POL-001 — Purchase Order Approval Policy | §4 Delegation-of-Authority Matrix | Approver may only approve within assigned dollar limit and categories; exceeding limit is a control deviation.",
+    "POL-001 — Purchase Order Approval Policy | §5 Documentation Requirements | Each approved PO must include evidence of approver's sign-off.",
+    "Synthetic Audit Standard — Control Operating-Effectiveness Testing | §S1 | Operating effectiveness: whether the control actually operated as designed throughout the period.",
+    "Synthetic Audit Standard — Control Operating-Effectiveness Testing | §S2 | Deviation rate vs. tolerable rate: if observed rate exceeds tolerable, auditor cannot conclude control operated effectively."
+  ],
+  "prior_year_reference": [
+    "WP-2024-001 | FY2024 | CTRL-01 | 1/30 (3.3%) deviation rate — one auto-approval bypass ($11,200). DEFICIENCY NOTED. Recurring: auto-approval bypass noted in FY2023 as well.",
+    "WP-2024-008 | FY2023 | CTRL-01 | 1/25 (4.0%) — one auto-approval bypass ($10,500). DEFICIENCY NOTED. Same root cause — now third consecutive period.",
+    "WP-2024-006 | FY2024 | CTRL-01 | 0/30 (0%) on authority-limit testing. NO EXCEPTION. TXN-003 authority breach is a new finding type."
+  ],
+  "preliminary_conclusion": "CTRL-01 exhibited a 22.2% deviation rate (2 of 9 items) in the current period. TXN-004 represents the third consecutive year of auto-approval bypass above the $10,000 threshold with no confirmed remediation. TXN-003 is a new finding — approver exceeded delegated authority by $20,000. The observed rate significantly exceeds conventional tolerable benchmarks for key authorization controls. These findings are presented for auditor evaluation.",
+  "judgment_note": "The auditor must: (1) establish the tolerable deviation rate for CTRL-01 and formally compare against the 22.2% observed rate; (2) assess whether the recurring auto-approval bypass (three consecutive periods) warrants escalation to a material weakness; (3) determine whether reliance on CTRL-01 should be withdrawn and substantive AP procedures expanded; (4) inquire about compensating controls or after-the-fact ratification for both exceptions.",
+  "recommended_disposition": "DEFICIENCY NOTED — Auditor judgment required",
+  "prepared_at": "2026-06-19T00:00:00Z"
+}

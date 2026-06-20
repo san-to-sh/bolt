@@ -1,0 +1,28 @@
+{
+  "objective": "Substantive test of AP — vouch payments to supporting documentation and scan for duplicate invoices.",
+  "assertion": "Occurrence, Authorization",
+  "control_id": "CTRL-03",
+  "procedure_performed": "Retrieved the full AP population for CTRL-03 (5 items, $74,400.00). Tested all items via test_items_against_control for missing supporting documentation and duplicate invoices. Queried criteria_rag for POL-001 §5 (documentation requirements), the synthetic standard on financial-statement assertions (occurrence), and the synthetic standard on sufficient appropriate audit evidence. Queried prior-year workpapers for CTRL-03 precedent on missing docs and duplicates.",
+  "population_summary": "Source: LEDGER_DB. Account: AP. Period: 2025–2026. Population: 5 items. Total value: $74,400.00.",
+  "sample": "Full population examined (5 of 5 items).",
+  "exceptions": [
+    "TXN-016 | Redstone Legal Partners | $14,200.00 | missing_supporting_doc — No supporting document (PO or receipt) on file. Breaches POL-001 §5 Documentation Requirements: 'Each approved PO must be retained with supporting documentation (quote, contract, or statement of work).'",
+    "TXN-019 | Lakewood Consulting Group | $45,000.00 | duplicate_invoice — Same vendor (V-103), same amount ($45,000), and same PO reference (PO-0510) as TXN-003 from CTRL-01. Possible duplicate payment. Challenges the Occurrence assertion per the synthetic standard on financial-statement assertions §S2: 'transactions that have been recorded actually took place.'"
+  ],
+  "deviation_rate": "2 of 5 items (40.0%)",
+  "criteria_cited": [
+    "POL-001 — Purchase Order Approval Policy | §5 Documentation Requirements | Each approved PO must be retained with the purchase requisition, evidence of approver's sign-off, and supporting documentation.",
+    "Synthetic Audit Standard — Financial Statement Assertions | §S2 Transaction-Level Assertions | Occurrence: transactions recorded actually took place and pertain to the entity.",
+    "Synthetic Audit Standard — Financial Statement Assertions | §S2 Transaction-Level Assertions | Authorization: all transactions approved by personnel with appropriate authority.",
+    "Synthetic Audit Standard — Sufficient Appropriate Audit Evidence and Sampling | §S1 | Evidence must be both sufficient (quantity) and appropriate (relevant and reliable).",
+    "Synthetic Audit Standard — Sufficient Appropriate Audit Evidence and Sampling | §S3 | Evaluating Sample Results: consider whether nature of exceptions suggests systemic issue."
+  ],
+  "prior_year_reference": [
+    "WP-2024-003 | FY2024 | CTRL-03 | 2/25 (8.0%) — two items lacked receiving reports. DEFICIENCY NOTED. Recurring: missing documentation also flagged in FY2023. Root cause: manual process for low-value goods receipts.",
+    "WP-2024-007 | FY2024 | CTRL-03 | 0/980 (0%) on duplicate detection. NO EXCEPTION. Current duplicate finding (TXN-019) is new."
+  ],
+  "preliminary_conclusion": "CTRL-03 exhibited two exceptions out of 5 items (40.0% deviation rate). TXN-016 lacks any supporting documentation for a $14,200 payment — this continues a recurring pattern of missing documentation noted in FY2023 and FY2024. TXN-019 appears to be a duplicate payment of $45,000 to Lakewood Consulting Group (same vendor, amount, and PO reference as TXN-003), which is a new finding type with no prior-year precedent. The combined exceptions total $59,200 (79.6% of the tested population by value). The auditor should assess materiality and determine whether the duplicate requires recovery action.",
+  "judgment_note": "The auditor must: (1) obtain alternative evidence for TXN-016 (e.g., contract, email authorization, vendor confirmation) or conclude the payment is unsupported; (2) investigate TXN-019 to determine whether it is a true duplicate payment requiring recovery or a legitimate re-billing with distinct deliverables; (3) assess the $59,200 combined exception amount against planning and performance materiality; (4) evaluate whether the recurring documentation gap warrants a management letter comment; (5) consider whether expanded substantive testing of the broader AP population is warranted given the 40% deviation rate.",
+  "recommended_disposition": "ESCALATE — Auditor judgment required",
+  "prepared_at": "2026-06-19T00:00:00Z"
+}

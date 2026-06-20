@@ -1,0 +1,25 @@
+{
+  "objective": "Test segregation of duties in the procure-to-pay cycle — no single individual both requests and approves a purchase.",
+  "assertion": "Authorization",
+  "control_id": "CTRL-02",
+  "procedure_performed": "Retrieved the full AP population for CTRL-02 (6 items, $87,700.00). Tested all items via test_items_against_control for segregation-of-duties violations (requestor == approver). Queried criteria_rag for POL-002 (Segregation of Duties Policy) and the synthetic standard on authorization assertions. Retrieved master record for E-211 to confirm role. Queried prior-year workpapers for CTRL-02 precedent.",
+  "population_summary": "Source: LEDGER_DB. Account: AP. Period: 2025–2026. Population: 6 items. Total value: $87,700.00.",
+  "sample": "Full population examined (6 of 6 items).",
+  "exceptions": [
+    "TXN-011 | Atlas Training Solutions | $4,200.00 | segregation_of_duties — Requestor E-211 (Robert Haines, HR Director) is the same person as approver E-211. Breaches POL-002 §2 Incompatible Function Pairs: 'Requesting a purchase / Approving the same purchase' must be performed by different individuals."
+  ],
+  "deviation_rate": "1 of 6 items (16.7%)",
+  "criteria_cited": [
+    "POL-002 — Segregation of Duties Policy | §1 Purpose | No single individual performs incompatible functions within the procure-to-pay cycle.",
+    "POL-002 — Segregation of Duties Policy | §2 Incompatible Function Pairs | Requesting a purchase and approving the same purchase must be performed by different individuals. A transaction where the requestor and approver are the same person is a control deviation.",
+    "POL-002 — Segregation of Duties Policy | §3 System Enforcement | ERP system shall prevent same user ID from completing both functions; where not feasible, compensating detective control required.",
+    "Synthetic Audit Standard — Financial Statement Assertions | §S2 | Authorization: all transactions approved by personnel with appropriate authority."
+  ],
+  "prior_year_reference": [
+    "WP-2024-002 | FY2024 | CTRL-02 | 0/142 (0%) — no SoD violations identified. NO EXCEPTION. Current finding is new — no prior precedent."
+  ],
+  "preliminary_conclusion": "CTRL-02 exhibited one segregation-of-duties violation (TXN-011, 16.7% deviation rate). E-211 both requested and approved a $4,200 purchase from Atlas Training Solutions. This is a new finding with no prior-year precedent (WP-2024-002 found zero violations in FY2024). The auditor should assess whether compensating controls (supervisory review per POL-002 §4) were in place and whether the ERP system enforcement (POL-002 §3) failed or was bypassed.",
+  "judgment_note": "The auditor must: (1) determine whether a compensating review was performed within 5 business days per POL-002 §4; (2) investigate whether the ERP system's SoD enforcement was bypassed or misconfigured for E-211's user profile; (3) assess whether this isolated violation represents a control design gap or an operational lapse; (4) determine the appropriate severity classification.",
+  "recommended_disposition": "DEFICIENCY NOTED — Auditor judgment required",
+  "prepared_at": "2026-06-19T00:00:00Z"
+}
