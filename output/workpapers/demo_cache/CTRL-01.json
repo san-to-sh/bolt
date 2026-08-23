@@ -6,7 +6,7 @@
   "population_summary": "Source: LEDGER_DB. Account: AP. Period: 2025–2026. Population: 9 items. Total value: $133,825.00.",
   "sample": "Full population examined (9 of 9 items). No sampling risk.",
   "exceptions": [
-    "TXN-003 | Lakewood Consulting Group | $45,000.00 | approval_authority_exceeded — Approver E-302 (Thomas Nguyen, Controller) max authority $25,000; amount exceeds limit by $20,000. Breaches POL-001 §4 Delegation-of-Authority Matrix: 'An approver may only approve purchase orders within the dollar limit and categories assigned to them.'",
+    "TXN-003 | Lakewood Consulting Group | $45,000.00 | approval_authority_exceeded — Approver E-302 (Controller) max authority $25,000; amount exceeds limit by $20,000. Breaches POL-001 §4 Delegation-of-Authority Matrix: 'An approver may only approve purchase orders within the dollar limit and categories assigned to them.'",
     "TXN-004 | Summit Logistics Inc. | $12,500.00 | auto_approved_above_threshold — Amount >= $10,000 was auto-approved (approved_by = SYSTEM) without manual sign-off. Breaches POL-001 §3 Approval Thresholds: Tier 2 ($10,000–$24,999) requires manual approval."
   ],
   "deviation_rate": "2 of 9 items (22.2%)",

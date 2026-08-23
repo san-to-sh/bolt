@@ -23,7 +23,6 @@ def get_master_record(entity_id: str) -> str:
         e = EMPLOYEES[entity_id]
         lines = [
             f"Employee Record: {entity_id}",
-            f"  Name:       {e['name']}",
             f"  Role:       {e['role']}",
             f"  Department: {e['department']}",
             f"  Hire Date:  {e['hire_date']}",
@@ -87,7 +86,7 @@ def check_authority_matrix(approver: str, amount: float, category: str | None = 
         reasons.append(f"category '{category}' not in approved categories: {', '.join(auth['categories'])}")
 
     lines = [
-        f"Approver: {approver} ({auth['name']}, {auth['role']})",
+        f"Approver: {approver} ({auth['role']})",
         f"  Amount:     ${amount:,.2f}",
         f"  Max Auth:   ${auth['max_approval_amount']:,.2f}",
         f"  Categories: {', '.join(auth['categories'])}",

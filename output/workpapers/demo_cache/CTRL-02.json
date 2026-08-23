@@ -6,7 +6,7 @@
   "population_summary": "Source: LEDGER_DB. Account: AP. Period: 2025–2026. Population: 6 items. Total value: $87,700.00.",
   "sample": "Full population examined (6 of 6 items).",
   "exceptions": [
-    "TXN-011 | Atlas Training Solutions | $4,200.00 | segregation_of_duties — Requestor E-211 (Robert Haines, HR Director) is the same person as approver E-211. Breaches POL-002 §2 Incompatible Function Pairs: 'Requesting a purchase / Approving the same purchase' must be performed by different individuals."
+    "TXN-011 | Atlas Training Solutions | $4,200.00 | segregation_of_duties — Requestor E-211 (HR Director) is the same person as approver E-211. Breaches POL-002 §2 Incompatible Function Pairs: 'Requesting a purchase / Approving the same purchase' must be performed by different individuals."
   ],
   "deviation_rate": "1 of 6 items (16.7%)",
   "criteria_cited": [

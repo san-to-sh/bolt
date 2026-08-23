@@ -121,8 +121,8 @@ def get_mcp_manager() -> MCPManager:
     return _mcp_manager
 
 
-def _get_llm():
-    return ChatAnthropic(model=MODEL, max_tokens=4096)
+def _get_llm(max_tokens: int = 4096):
+    return ChatAnthropic(model=MODEL, max_tokens=max_tokens)
 
 
 @retry(
@@ -130,8 +130,8 @@ def _get_llm():
     stop=stop_after_attempt(3),
     wait=wait_exponential(multiplier=2, min=4, max=30),
 )
-async def _invoke_llm(messages: list) -> AIMessage:
-    llm = _get_llm()
+async def _invoke_llm(messages: list, max_tokens: int = 4096) -> AIMessage:
+    llm = _get_llm(max_tokens=max_tokens)
     return await llm.ainvoke(messages)
 
 
@@ -306,7 +306,7 @@ async def workpaper_node(state: AgentState) -> dict:
         )),
     ]
 
-    response = await _invoke_llm(messages)
+    response = await _invoke_llm(messages, max_tokens=8192)
     raw = response.content.strip()
 
     # Strip markdown fences if present
